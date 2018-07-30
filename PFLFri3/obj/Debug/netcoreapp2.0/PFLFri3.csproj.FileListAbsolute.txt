@@ -1,0 +1,11 @@
+C:\Users\smccaffr\source\repos\PFLFri3\PFLFri3\obj\Debug\netcoreapp2.0\PFLFri3.csprojAssemblyReference.cache
+C:\Users\smccaffr\source\repos\PFLFri3\PFLFri3\obj\Debug\netcoreapp2.0\PFLFri3.csproj.CoreCompileInputs.cache
+C:\Users\smccaffr\source\repos\PFLFri3\PFLFri3\obj\Debug\netcoreapp2.0\PFLFri3.AssemblyInfoInputs.cache
+C:\Users\smccaffr\source\repos\PFLFri3\PFLFri3\obj\Debug\netcoreapp2.0\PFLFri3.AssemblyInfo.cs
+C:\Users\smccaffr\source\repos\PFLFri3\PFLFri3\bin\Debug\netcoreapp2.0\PFLFri3.deps.json
+C:\Users\smccaffr\source\repos\PFLFri3\PFLFri3\bin\Debug\netcoreapp2.0\PFLFri3.runtimeconfig.json
+C:\Users\smccaffr\source\repos\PFLFri3\PFLFri3\bin\Debug\netcoreapp2.0\PFLFri3.runtimeconfig.dev.json
+C:\Users\smccaffr\source\repos\PFLFri3\PFLFri3\bin\Debug\netcoreapp2.0\PFLFri3.dll
+C:\Users\smccaffr\source\repos\PFLFri3\PFLFri3\bin\Debug\netcoreapp2.0\PFLFri3.pdb
+C:\Users\smccaffr\source\repos\PFLFri3\PFLFri3\obj\Debug\netcoreapp2.0\PFLFri3.dll
+C:\Users\smccaffr\source\repos\PFLFri3\PFLFri3\obj\Debug\netcoreapp2.0\PFLFri3.pdb

@@ -1,0 +1,88 @@
+﻿@model RootObjectDetail
+
+@{
+    ViewData["Title"] = "Product Details";
+}
+
+
+@if (Model != null)
+{
+<div class="row">
+    <div class="col-md-4">
+        <div class="thumbnail">
+            <img src="@Url.Content(Model.results.data.imageURL)" />
+
+            <h3>@Html.DisplayFor(modelItem => Model.results.data.name)</h3>
+            <p>@Html.DisplayFor(modelItem => Model.results.data.description)</p>
+        </div>
+    </div>
+    @{
+        var myOrder = new Order();
+    }
+    <form method="post">
+        <div class="col-md-4">
+            <fieldset>
+                <legend>Customer</legend>
+                <div>
+                    <label for="firstName">First Name:</label>
+                    @Html.TextBoxFor(m => myOrder.orderCustomer.firstName)
+                    @Html.ValidationMessageFor(m => myOrder.orderCustomer.firstName)
+                </div>
+                <div>
+                    <label for="firstName">Last Name:</label>
+                    @Html.TextBoxFor(m => myOrder.orderCustomer.lastName)
+                    @Html.ValidationMessageFor(m => myOrder.orderCustomer.lastName)
+                </div>
+                <div>
+                    <label for="companyName">Company Name:</label>
+                    @Html.TextBoxFor(m => myOrder.orderCustomer.companyName)
+                    @Html.ValidationMessageFor(m => myOrder.orderCustomer.companyName)
+                </div>
+                <div>
+                    <label for="address1">Address:</label>
+                    @Html.TextBoxFor(m => myOrder.orderCustomer.address1)
+                    @Html.ValidationMessageFor(m => myOrder.orderCustomer.address1)
+                </div>
+                <div>
+                    <label for="address2"></label>
+                    @Html.TextBoxFor(m => myOrder.orderCustomer.address2)
+                    @Html.ValidationMessageFor(m => myOrder.orderCustomer.address2)
+                </div>
+                <div>
+                    <label for="city">City:</label>
+                    @Html.TextBoxFor(m => myOrder.orderCustomer.city)
+                    @Html.ValidationMessageFor(m => myOrder.orderCustomer.city)
+                </div>
+                <div>
+                    <label for="state">State:</label>
+                    @Html.TextBoxFor(m => myOrder.orderCustomer.state)
+                    @Html.ValidationMessageFor(m => myOrder.orderCustomer.state)
+                </div>
+                <div>
+                    <label for="postalCode">Postal Code:</label>
+                    @Html.TextBoxFor(m => myOrder.orderCustomer.postalCode)
+                    @Html.ValidationMessageFor(m => myOrder.orderCustomer.postalCode)
+                </div>
+                <div>
+                    <label for="countryCode">Country Code:</label>
+                    @Html.TextBoxFor(m => myOrder.orderCustomer.countryCode)
+                    @Html.ValidationMessageFor(m => myOrder.orderCustomer.countryCode)
+                </div>
+                <div>
+                    <label for="email">E-Mail:</label>
+                    @Html.TextBoxFor(m => myOrder.orderCustomer.email)
+                    @Html.ValidationMessageFor(m => myOrder.orderCustomer.email)
+                </div>
+                <div>
+                    <label for="phone">Phone:</label>
+                    @Html.TextBoxFor(m => myOrder.orderCustomer.phone)
+                    @Html.ValidationMessageFor(m => myOrder.orderCustomer.phone)
+                </div>
+            </fieldset>
+        </div>
+        <div class="col-md-4">
+            <button type="submit" class="btn btn-primary">Order</button>
+        </div>
+    </form>
+</div>
+}

@@ -1,0 +1,59 @@
+﻿@model RootObjectProduct
+
+@{
+    ViewBag.Title = "Home";
+}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h1>Printing For Less</h1>
+                    </div>
+                    <div class="panel-body">
+                        <img class="img-responsive" src="~/images/PFLlogo46.png" />
+                        <h3>P. 800-­930-6040</h3>
+                        <h3>E.
+                            <a href="mailto:info@printingforless.com" target="_top">info@printingforless.com</a>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h1>Products</h1>
+                    </div>
+                    <div class="panel-body">
+                        @if (Model != null)
+                        {
+                            @foreach (var item in Model.results.data)
+                            {
+                        <div class="row">
+                            <div class="col-md-12 fixedheight">
+                                <div class="panel panel-primary">
+                                    <div class="panel-body">
+                                        <div class="col-md-6">
+                                            <div class="thumbnail">
+                                                <img src="@Url.Content(item.imageURL)" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="caption">
+                                                <h3>@Html.DisplayFor(modelItem => item.name)</h3>
+                                                <p>@Html.DisplayFor(modelItem => item.description)</p>
+                                                <a href="/Order?id=@item.productID" class="btn btn-primary" role="button" aria-disabled="true">Order</a>
+                                                <a href="/Order?id=@item.productID" class="btn btn-success" role="button" aria-disabled="true">Details</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
