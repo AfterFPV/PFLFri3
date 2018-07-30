@@ -17,197 +17,77 @@
                 </div>
             </div>
 
-            <form method="post">
+            <form method="post" action="order/add">
                 <div class="col-md-4">
+
                     <h3>Delivery Method</h3>
-                    <select class="selectpicker form-control">
+                    <select class="selectpicker form-control" name="MailingMethod">
                         <option>-</option>
                         @foreach (var deliveryMethods in Model.deliveredPrices)
                         {
-                            <option>@Html.DisplayFor(modelItem => deliveryMethods.description) - $@Html.DisplayFor(modelItem => deliveryMethods.price) </option>
+                        <option>@Html.DisplayFor(modelItem => deliveryMethods.deliveryMethodCode) - @Html.DisplayFor(modelItem => deliveryMethods.description) - $@Html.DisplayFor(modelItem => deliveryMethods.price) </option>
                         }
-
                     </select>
-                    @{
-                        Item thisItem = new Item
-                        {
-                            itemSequenceNumber = 1,
-                            productID = Model.id,
-                        };
-
-                        List<Item> myItemList = new List<Item>() { thisItem };
-
-                        Order myOrder = new Order();
-                        myOrder.items = myItemList;
-                        myOrder.partnerOrderReference = "Order Refno";
-                    }
-                    <div>
-                        <label for="quantity">Quantity:</label>
-                        @Html.TextBoxFor(m => thisItem.quantity, new { @class = "form-control" })
-                    </div>
-
-                    @Html.ActionLink("Order", "CreateOrder", myOrder)
+                    <fieldset class="form-control">
+                        <label for="Quantity">Quantity:</label>
+                        <input type="text" name="Quantity" value="" required />
+                        <input type="hidden" name="id" value="@Model.id" />
+                    </fieldset>
+                    <button type="submit" class="btn btn-primary">Order</button>
                 </div>
-                @*
-                    <div class="col-md-4" style="padding-top:8x;">
-                        <fieldset>
-                            <legend>Customer</legend>
-                            <div>
-                                <label for="firstName">First Name:</label>
 
-                                @Html.TextBoxFor(m => myOrder.orderCustomer.firstName, new { @class = "form-control" })
-                                @Html.ValidationMessageFor(m => myOrder.orderCustomer.firstName)
+                <div class="col-md-4">
+                    <fieldset>
+
+                        <legend>Customer</legend>
+                            <div class="form-control">
+                                <label for="firstName">First Name:</label>
+                                <input type="text" name="FirstName" value="Scott" required />
                             </div>
-                            <div>
-                                <label for="firstName">Last Name:</label>
-                                @Html.TextBoxFor(m => myOrder.orderCustomer.lastName, new { @class = "form-control" })
-                                @Html.ValidationMessageFor(m => myOrder.orderCustomer.lastName)
+                            <div class="form-control">
+                                <label for="lastname">Last Name:</label>
+                                <input type="text" name="LastName" value="McCaffrey" required />
                             </div>
-                            <div>
+                            <div class="form-control">
                                 <label for="companyName">Company Name:</label>
-                                @Html.TextBoxFor(m => myOrder.orderCustomer.companyName, new { @class = "form-control" })
-                                @Html.ValidationMessageFor(m => myOrder.orderCustomer.companyName)
+                                <input type="text" name="CompanyName" value="Yellowstone Drones" />
                             </div>
-                            <div>
+                            <div class="form-control">
                                 <label for="address1">Address:</label>
-                                @Html.TextBoxFor(m => myOrder.orderCustomer.address1, new { @class = "form-control" })
-                                @Html.ValidationMessageFor(m => myOrder.orderCustomer.address1)
+                                <input type="text" name="Address1" value="135 Pray Rd" Required />
                             </div>
-                            <div>
+                            <div class="form-control">
                                 <label for="address2"></label>
-                                @Html.TextBoxFor(m => myOrder.orderCustomer.address2, new { @class = "form-control" })
-                                @Html.ValidationMessageFor(m => myOrder.orderCustomer.address2)
+                                <input type="text" name="Address2" value="" />
                             </div>
-                            <div>
+                            <div class="form-control">
                                 <label for="city">City:</label>
-                                @Html.TextBoxFor(m => myOrder.orderCustomer.city, new { @class = "form-control" })
-                                @Html.ValidationMessageFor(m => myOrder.orderCustomer.city)
+                                <input type="text" name="City" value="Pray" required />
                             </div>
-                            <div>
+                            <div class="form-control">
                                 <label for="state">State:</label>
-                                @Html.TextBoxFor(m => myOrder.orderCustomer.state, new { @class = "form-control" })
-                                @Html.ValidationMessageFor(m => myOrder.orderCustomer.state)
+                                <input type="text" name="State" value="MT" required />
                             </div>
-                            <div>
+                            <div class="form-control">
                                 <label for="postalCode">Postal Code:</label>
-                                @Html.TextBoxFor(m => myOrder.orderCustomer.postalCode, new { @class = "form-control" })
-                                @Html.ValidationMessageFor(m => myOrder.orderCustomer.postalCode)
+                                <input type="text" name="PostalCode" value="59065" required />
                             </div>
-                            <div>
+                            <div class="form-control">
                                 <label for="countryCode">Country Code:</label>
-                                @Html.TextBoxFor(m => myOrder.orderCustomer.countryCode, new { @class = "form-control" })
-                                @Html.ValidationMessageFor(m => myOrder.orderCustomer.countryCode)
+                                <input type="text" name="CountryCode" value="US" required />
                             </div>
-                            <div>
+                            <div class="form-control">
                                 <label for="email">E-Mail:</label>
-                                @Html.TextBoxFor(m => myOrder.orderCustomer.email, new { @class = "form-control" })
-                                @Html.ValidationMessageFor(m => myOrder.orderCustomer.email)
+                                <input type="text" name="Email" value="mccaffrey.scott@gmail.com" required />
                             </div>
-                            <div>
+                            <div class="form-control">
                                 <label for="phone">Phone:</label>
-                                @Html.TextBoxFor(m => myOrder.orderCustomer.phone, new { @class = "form-control" })
-                                @Html.ValidationMessageFor(m => myOrder.orderCustomer.phone)
+                                <input type="text" name="Phone" value="9788317098" />
                             </div>
-                        </fieldset>
-                    </div>
-                *@
+                    </fieldset>
+                </div>
             </form>
         </div>
     </div>
 }
-@*
-    <div>
-        <h4>ProductDetails</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.id)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.id)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.sku)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.sku)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.name)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.name)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.description)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.description)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.imageURL)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.imageURL)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.quantityDefault)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.quantityDefault)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.quantityMinimum)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.quantityMinimum)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.quantityMaximum)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.quantityMaximum)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.quantityIncrement)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.quantityIncrement)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.shippingMethodDefault)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.shippingMethodDefault)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.emailTemplateId)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.emailTemplateId)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.hasTemplate)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.hasTemplate)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.lastUpdated)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.lastUpdated)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.productFormat)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.productFormat)
-            </dd>
-        </dl>
-    </div>
-    <div>
-        @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-        <a asp-action="Index">Back to List</a>
-    </div>
-*@
+

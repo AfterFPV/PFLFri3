@@ -169,7 +169,7 @@ namespace PFLFri3.Models
         public string itemFile { get; set; }
     }
 
-    public class Mailings
+    public class Mailing
     {
         public int mailingSequenceNumber { get; set; }
         public string mailingMethod { get; set; }
@@ -180,6 +180,46 @@ namespace PFLFri3.Models
         public string partnerOrderReference { get; set; }
         public OrderCustomer orderCustomer { get; set; }
         public List<Item> items { get; set; }
-        public List<Mailings> mailings { get; set; }
+        public List<Mailing> mailings { get; set; }
+    }
+
+    public class OrderPrices
+    {
+        public double bundleCouponAmount { get; set; }
+        public double envelopeTotalPrice { get; set; }
+        public double mailingPriceTotal { get; set; }
+        public double orderTotalPrice { get; set; }
+        public double printPriceTotal { get; set; }
+        public double rushTotalPrice { get; set; }
+        public double secondSheetTotal { get; set; }
+        public double shipPriceTotal { get; set; }
+    }
+
+    public class OrderData
+    {
+        public string orderNumber { get; set; }
+        public string partnerOrderReference { get; set; }
+        public OrderCustomer orderCustomer { get; set; }
+        public List<Item> items { get; set; }
+        public object shipments { get; set; }
+        public List<Mailing> mailings { get; set; }
+        public object payments { get; set; }
+        public object itemShipments { get; set; }
+        public object webhooks { get; set; }
+        public OrderPrices orderPrices { get; set; }
+        public object billingVariables { get; set; }
+    }
+
+    public class OrderResults
+    {
+        public List<object> errors { get; set; }
+        public List<object> messages { get; set; }
+        public OrderData data { get; set; }
+    }
+
+    public class RootObjectOrder
+    {
+        public Meta meta { get; set; }
+        public OrderResults results { get; set; }
     }
 }

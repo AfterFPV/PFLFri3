@@ -65,6 +65,7 @@ namespace PFLFri3.Controllers
             using (var result = await httpClient.GetAsync(uri + id))
             {
                 RootObjectDetail rObj = null;
+
                 if (result.IsSuccessStatusCode)
                 {
                     string content = await result.Content.ReadAsStringAsync();
@@ -75,20 +76,27 @@ namespace PFLFri3.Controllers
             }
         }
 
-        public static async Task<string> PostOrder(Order order)
+        public static async Task<RootObjectOrder> PostOrder(Order order)
         {
             string uri = "https://testapi.pfl.com/orders?apikey=136085";
 
             HttpClient httpClient = getHttpClient();
 
             var jsonObj = JsonConvert.SerializeObject(order);
-            Console.WriteLine("SMANCHOR2");
-            Console.WriteLine(jsonObj.ToString());
-            var content = new StringContent(jsonObj.ToString(), Encoding.UTF8, "application/json");
-            
-            var result = await httpClient.PostAsync(uri, content);
+            var jsonString = new StringContent(jsonObj.ToString(), Encoding.UTF8, "application/json");
 
-            return "";
+            using (var result = await httpClient.PostAsync(uri, jsonString))
+            {
+                RootObjectOrder rObj = null;
+
+                if (result.IsSuccessStatusCode)
+                {
+                    string content = await result.Content.ReadAsStringAsync();
+                    rObj = JsonConvert.DeserializeObject<RootObjectOrder>(content);
+                }
+
+                return rObj;
+            }
         }
 
     }
