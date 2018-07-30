@@ -17,10 +17,8 @@ namespace PFLFri3.Controllers
         {
             HttpClient httpClient = new HttpClient();
 
-            string auth = File.ReadAllText("Auth.txt");
-
             httpClient.DefaultRequestHeaders.Accept.Clear();
-            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", auth);
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", "bWluaXByb2plY3Q6UHIhbnQxMjM=");
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
             return httpClient;
@@ -79,11 +77,15 @@ namespace PFLFri3.Controllers
 
         public static async Task<string> PostOrder(Order order)
         {
-            string uri = "https://testapi.pfl.com/products?apikey=136085";
+            string uri = "https://testapi.pfl.com/orders?apikey=136085";
 
             HttpClient httpClient = getHttpClient();
 
-            var content = new StringContent(JsonConvert.SerializeObject(order).ToString(), Encoding.UTF8, "application/json");
+            var jsonObj = JsonConvert.SerializeObject(order);
+            Console.WriteLine("SMANCHOR2");
+            Console.WriteLine(jsonObj.ToString());
+            var content = new StringContent(jsonObj.ToString(), Encoding.UTF8, "application/json");
+            
             var result = await httpClient.PostAsync(uri, content);
 
             return "";

@@ -9,31 +9,23 @@ namespace PFLFri3.Controllers
 {
     public class OrderController : Controller
     {
-        public IActionResult Index(int id)
+        public IActionResult Index()
         {
-            RootObjectDetail rObjDet = null;
-            rObjDet = APIServices.GetProductDetails(id).Result;
-
-            return View(rObjDet);
+            return View();
         }
 
-        [HttpPost]
-        public ActionResult OnPost(Order model)
+        //[Route("Order")]
+        //[HttpPost]
+        public ActionResult CreateOrder(Order model)
         {
-            if (!ModelState.IsValid)
-            {
-                return View(model);
-            }
-
             Item myItem = new Item
             {
                 itemSequenceNumber = 1,
                 productID = 9877,
                 quantity = 1000
             };
-
             List<Item> myItemList = new List<Item>() { myItem };
-
+            
             OrderCustomer myOrderCustomer = new OrderCustomer
             {
                 firstName = "Scott",
@@ -49,11 +41,19 @@ namespace PFLFri3.Controllers
                 phone = "978.831.7098"
             };
 
+            Mailings myMailings = new Mailings()
+            {
+                mailingSequenceNumber = 1,
+                mailingMethod = "1C"
+            };
+            List<Mailings> myMailingsList = new List<Mailings>() { myMailings };
+
             Order myOrder = new Order
             {
                 partnerOrderReference = "Order Ref",
                 orderCustomer = myOrderCustomer,
-                items = myItemList
+                items = myItemList,
+                mailings = myMailingsList
             };
 
             string blank = APIServices.PostOrder(myOrder).Result;

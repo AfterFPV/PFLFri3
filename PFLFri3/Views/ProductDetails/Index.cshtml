@@ -1,0 +1,213 @@
+﻿@model PFLFri3.Models.ProductDetails
+
+@{
+    ViewData["Title"] = "Product Details";
+}
+
+@if (Model != null)
+{
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="thumbnail text-center">
+                    <img src="@Url.Content(Model.imageURL)" />
+
+                    <h3>@Html.DisplayFor(modelItem => Model.name)</h3>
+                    <p>@Html.DisplayFor(modelItem => Model.description)</p>
+                </div>
+            </div>
+
+            <form method="post">
+                <div class="col-md-4">
+                    <h3>Delivery Method</h3>
+                    <select class="selectpicker form-control">
+                        <option>-</option>
+                        @foreach (var deliveryMethods in Model.deliveredPrices)
+                        {
+                            <option>@Html.DisplayFor(modelItem => deliveryMethods.description) - $@Html.DisplayFor(modelItem => deliveryMethods.price) </option>
+                        }
+
+                    </select>
+                    @{
+                        Item thisItem = new Item
+                        {
+                            itemSequenceNumber = 1,
+                            productID = Model.id,
+                        };
+
+                        List<Item> myItemList = new List<Item>() { thisItem };
+
+                        Order myOrder = new Order();
+                        myOrder.items = myItemList;
+                        myOrder.partnerOrderReference = "Order Refno";
+                    }
+                    <div>
+                        <label for="quantity">Quantity:</label>
+                        @Html.TextBoxFor(m => thisItem.quantity, new { @class = "form-control" })
+                    </div>
+
+                    @Html.ActionLink("Order", "CreateOrder", myOrder)
+                </div>
+                @*
+                    <div class="col-md-4" style="padding-top:8x;">
+                        <fieldset>
+                            <legend>Customer</legend>
+                            <div>
+                                <label for="firstName">First Name:</label>
+
+                                @Html.TextBoxFor(m => myOrder.orderCustomer.firstName, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => myOrder.orderCustomer.firstName)
+                            </div>
+                            <div>
+                                <label for="firstName">Last Name:</label>
+                                @Html.TextBoxFor(m => myOrder.orderCustomer.lastName, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => myOrder.orderCustomer.lastName)
+                            </div>
+                            <div>
+                                <label for="companyName">Company Name:</label>
+                                @Html.TextBoxFor(m => myOrder.orderCustomer.companyName, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => myOrder.orderCustomer.companyName)
+                            </div>
+                            <div>
+                                <label for="address1">Address:</label>
+                                @Html.TextBoxFor(m => myOrder.orderCustomer.address1, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => myOrder.orderCustomer.address1)
+                            </div>
+                            <div>
+                                <label for="address2"></label>
+                                @Html.TextBoxFor(m => myOrder.orderCustomer.address2, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => myOrder.orderCustomer.address2)
+                            </div>
+                            <div>
+                                <label for="city">City:</label>
+                                @Html.TextBoxFor(m => myOrder.orderCustomer.city, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => myOrder.orderCustomer.city)
+                            </div>
+                            <div>
+                                <label for="state">State:</label>
+                                @Html.TextBoxFor(m => myOrder.orderCustomer.state, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => myOrder.orderCustomer.state)
+                            </div>
+                            <div>
+                                <label for="postalCode">Postal Code:</label>
+                                @Html.TextBoxFor(m => myOrder.orderCustomer.postalCode, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => myOrder.orderCustomer.postalCode)
+                            </div>
+                            <div>
+                                <label for="countryCode">Country Code:</label>
+                                @Html.TextBoxFor(m => myOrder.orderCustomer.countryCode, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => myOrder.orderCustomer.countryCode)
+                            </div>
+                            <div>
+                                <label for="email">E-Mail:</label>
+                                @Html.TextBoxFor(m => myOrder.orderCustomer.email, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => myOrder.orderCustomer.email)
+                            </div>
+                            <div>
+                                <label for="phone">Phone:</label>
+                                @Html.TextBoxFor(m => myOrder.orderCustomer.phone, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => myOrder.orderCustomer.phone)
+                            </div>
+                        </fieldset>
+                    </div>
+                *@
+            </form>
+        </div>
+    </div>
+}
+@*
+    <div>
+        <h4>ProductDetails</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.id)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.id)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.sku)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.sku)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.name)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.name)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.description)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.description)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.imageURL)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.imageURL)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.quantityDefault)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.quantityDefault)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.quantityMinimum)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.quantityMinimum)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.quantityMaximum)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.quantityMaximum)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.quantityIncrement)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.quantityIncrement)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.shippingMethodDefault)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.shippingMethodDefault)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.emailTemplateId)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.emailTemplateId)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.hasTemplate)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.hasTemplate)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.lastUpdated)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.lastUpdated)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.productFormat)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.productFormat)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+        <a asp-action="Index">Back to List</a>
+    </div>
+*@

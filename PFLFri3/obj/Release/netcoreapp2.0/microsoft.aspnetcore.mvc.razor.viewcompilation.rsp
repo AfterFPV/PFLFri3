@@ -1,0 +1,12 @@
+C:\Users\smccaffr\source\repos\PFLFri3\PFLFri3
+--output-path=obj\Release\netcoreapp2.0\
+--application-name=PFLFri3
+--content-root=C:\Users\smccaffr\source\repos\PFLFri3\PFLFri3
+--file=C:\Users\smccaffr\source\repos\PFLFri3\PFLFri3\Views\Home\About.cshtml
+--file=C:\Users\smccaffr\source\repos\PFLFri3\PFLFri3\Views\Home\Index.cshtml
+--file=C:\Users\smccaffr\source\repos\PFLFri3\PFLFri3\Views\Order\Index.cshtml
+--file=C:\Users\smccaffr\source\repos\PFLFri3\PFLFri3\Views\Shared\Error.cshtml
+--file=C:\Users\smccaffr\source\repos\PFLFri3\PFLFri3\Views\Shared\_Layout.cshtml
+--file=C:\Users\smccaffr\source\repos\PFLFri3\PFLFri3\Views\Shared\_ValidationScriptsPartial.cshtml
+--file=C:\Users\smccaffr\source\repos\PFLFri3\PFLFri3\Views\_ViewImports.cshtml
+--file=C:\Users\smccaffr\source\repos\PFLFri3\PFLFri3\Views\_ViewStart.cshtml

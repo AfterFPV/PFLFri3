@@ -169,10 +169,17 @@ namespace PFLFri3.Models
         public string itemFile { get; set; }
     }
 
+    public class Mailings
+    {
+        public int mailingSequenceNumber { get; set; }
+        public string mailingMethod { get; set; }
+    }
+
     public class Order
     {
         public string partnerOrderReference { get; set; }
         public OrderCustomer orderCustomer { get; set; }
         public List<Item> items { get; set; }
+        public List<Mailings> mailings { get; set; }
     }
 }
